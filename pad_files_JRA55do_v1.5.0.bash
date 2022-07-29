@@ -9,9 +9,9 @@ for year in $YEARS ; do
 
   for var in $VARS ; do
 
-    nfiles=$( ls $INPUTDIR | grep $year | grep ${var}_ | wc -l )
+    nfiles=$( ls $INPUTDIR | grep _${year} | grep ${var}_ | wc -l )
     if [ "$nfiles" != 1 ] ; then echo "cannot find a single file for $var for year $year" ; exit 1 ; fi
-    infile=$( ls $INPUTDIR | grep $year | grep ${var}_ )
+    infile=$( ls $INPUTDIR | grep _${year} | grep ${var}_ )
 
     fileout=$( echo $infile | sed -e "s/\.nc/\.padded\.nc/" )
     if [ ! -f $fileout ] ; then
